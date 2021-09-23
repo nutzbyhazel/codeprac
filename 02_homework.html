@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>스파르타코딩클럽 | 부트스트랩 연습하기</title>
+    <style>
+        .wrap {
+            width: 600px;
+            margin: auto;
+            padding-top: 50px;
+            padding-bottom: 100px;
+        }
+
+        .product_img {
+            width: 600px;
+            height: 600px;
+
+            background-image: url("https://i.pinimg.com/564x/81/53/a3/8153a3cfd6080d1201700b9e01fcaa31.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product_info {
+            padding: 50px 0px 30px 0px;
+        }
+
+        .orderform {
+            padding-top: 20px;
+        }
+
+        .mybtn {
+            width: 100px;
+            margin: auto;
+            display: block;
+        }
+
+        .button {
+            padding-top: 20px;
+        }
+
+        .rate {
+            color: blue;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            get_rate();
+        });
+
+        function get_rate() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let now_rate = response['rate'];
+                    $('#now-rate').text(now_rate);
+                }
+            })
+        }
+
+        function order() {
+            alert('주문이 완료되었습니다!');
+        }
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="product_img">
+    </div>
+
+    <div class="product_info">
+        <h1>인테리어 포스터_몬트세라 <span style="font-size: 16px">가격 : 15,000원 / 개</span></h1>
+        <p style="padding-top: 20px"><span style="font-weight: bold">상품 설명 :</span> 인테리어 소품으로 집안 등 분위기를 전환하여 새로운 분위기로
+            만들어보세요. 선물용으로도 많이 이용되며 받으시는 분의 기쁨이 느껴질 수 있는 제품입니다. 거실 및 방 안 어디에나 잘 어우러지며, 각각 따로 연출 하여도 멋이나는 디자인입니다.</p>
+        <p class="rate">달러-원 환율: <span id="now-rate">1219.15</span></p>
+    </div>
+
+    <div>
+        <h1>주문하기</h1>
+        <div class="orderform">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">주문자 이름 </label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="예) 김미미">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">수량</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">주소</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="예) 서울시 용산구 원효동">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">연락처</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="예) 01012345678">
+                </div>
+            </div>
+
+            <div class="button">
+                <button type="submit" class="btn btn-primary mybtn">주문하기</button>
+            </div>
+                <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">이름</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">주소</th>
+                    <th scope="col">전화번호</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">홍길동</th>
+                    <td>1</td>
+                    <td>서울시 동작구</td>
+                    <td>010-1234-5678</td>
+                </tr>
+                <tr>
+                    <th scope="row">신사임당</th>
+                    <td>2</td>
+                    <td>서울시 영등포구</td>
+                    <td>010-1234-5678</td>
+                </tr>
+                <tr>
+                    <th scope="row">장영실</th>
+                    <td>1</td>
+                    <td>부산시 중구</td>
+                    <td>010-1234-5678</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
+
